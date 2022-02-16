@@ -1,5 +1,5 @@
 object Kotlin {
-    const val version = "1.6.0"
+    const val version = "1.6.10"
     private const val coreVersion = "1.7.0"
     const val coroutinesVersion = "1.6.0"
     const val core = "androidx.core:core-ktx:$coreVersion"

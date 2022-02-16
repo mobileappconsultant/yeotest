@@ -1,5 +1,5 @@
 object Compose {
-    const val composeVersion = "1.1.0-alpha03"
+    const val composeVersion = "1.1.0"
     private const val accompanistVersion = "0.19.0"
     private const val constraintlayoutVersion = "1.0.0-beta02"
     const val navigationVersion = "2.4.0-beta02"
