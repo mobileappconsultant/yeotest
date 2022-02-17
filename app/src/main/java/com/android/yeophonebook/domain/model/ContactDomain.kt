@@ -4,7 +4,8 @@ import androidx.room.PrimaryKey
 
 data class ContactDomain(
     @PrimaryKey
-    val id: String,
+    val id: Long,
     val name: String,
-    val phoneNumber: String
+    val phoneNumber: String,
+    val dateUpdated: Long? = null
 )

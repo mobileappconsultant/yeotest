@@ -5,10 +5,11 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
 import com.android.yeophonebook.ui.model.Contact
+import javax.inject.Inject
 import timber.log.Timber
 
 
-class GetContactsFromDevice {
+class GetContactsFromDevice @Inject constructor() {
 
     companion object {
         private val PROJECTION = arrayOf(
@@ -37,12 +38,12 @@ class GetContactsFromDevice {
                     it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
                 var name: String
                 var number: String
-                var id: String
+                var id: Long
                 while (it.moveToNext()) {
                     name = it.getString(nameIndex)
                     number = it.getString(numberIndex)
-                    id = it.getString(idIndex)
-                    number = number.trim()
+                    id = it.getLong(idIndex)
+                    number = number.replace(" ", "")
                     if (!mobileNoSet.contains(number)) {
                         contactList.add(Contact(id, name, number))
                         mobileNoSet.add(number)
