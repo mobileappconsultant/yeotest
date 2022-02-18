@@ -52,3 +52,6 @@ There are currently the following workflows available:
 ## How To Build
 Pull the code on this branch, import into Android Studio, from there you can run it like a standard
 android project project or run ./gradlew assembleDebug. Further notes can be found here https://developer.android.com/studio/build/building-cmdline#DebugMode
+
+## Screenshots
+![Screenshot 1](screenshots/1.png "Title")
