@@ -1,6 +1,6 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
-val key: String = gradleLocalProperties(rootDir).getProperty("encryptionKey")
+val key: String = gradleLocalProperties(rootDir).getOrDefault("encryptionKey", "\"default-key\"") as String
 
 plugins {
     id(Plugins.androidApplication)
