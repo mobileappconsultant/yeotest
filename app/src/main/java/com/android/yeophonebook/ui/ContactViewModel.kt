@@ -1,6 +1,7 @@
 package com.android.yeophonebook.ui
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.yeophonebook.domain.ContactMapper
@@ -8,10 +9,10 @@ import com.android.yeophonebook.domain.usecases.FetchContactsFromDbUseCase
 import com.android.yeophonebook.domain.usecases.GetContactsFromDevice
 import com.android.yeophonebook.domain.usecases.SaveContactsToDbUseCase
 import com.android.yeophonebook.ui.model.Contact
+import com.android.yeophonebook.utils.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -24,15 +25,11 @@ class ContactViewModel @Inject constructor(
     private val getContactsFromDevice: GetContactsFromDevice
 ) : ViewModel() {
 
-    private val _contactsFlow = MutableStateFlow<List<Contact>>(listOf())
+    private val _contactsLiveData = MutableLiveData<List<Contact>>(listOf())
 
-    val contactsFlow = _contactsFlow.asStateFlow()
+    val contactsLiveData = _contactsLiveData.asLiveData()
 
-    init {
-        getContacts()
-    }
-
-    private fun saveContactsToDb(contact: List<Contact>){
+    private fun saveContactsToDb(contact: List<Contact>) {
         viewModelScope.launch {
             saveContactsToDbUseCase
                 .execute(contact.map { contactMapper.mapToDomain(it) })
@@ -40,14 +37,14 @@ class ContactViewModel @Inject constructor(
         }
     }
 
-    private fun getContacts() {
+    fun onInit() {
         viewModelScope.launch {
             fetchContactsFromDbUseCase
                 .execute()
                 .collect {
-                    _contactsFlow.value = it.map { contact ->
+                    _contactsLiveData.postValue(it.map { contact ->
                         contactMapper.mapToPresentation(contact)
-                    }
+                    })
                 }
         }
     }

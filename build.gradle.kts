@@ -1,4 +1,9 @@
+plugins {
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+}
+
 buildscript {
+    apply(from = "githooks.gradle")
     repositories {
         gradlePluginPortal()
         google()

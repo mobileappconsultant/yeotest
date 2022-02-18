@@ -42,6 +42,7 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -62,11 +63,13 @@ class MainActivity : ComponentActivity() {
                     rememberPermissionState(android.Manifest.permission.READ_CONTACTS)
                 val context = LocalContext.current
 
+                viewModel.onInit()
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val contacts = viewModel.contactsFlow.collectAsState()
+                    val contacts = viewModel.contactsLiveData.observeAsState()
                     Column(modifier = Modifier.fillMaxSize()) {
                         CustomTopAppBar {
                             contactsPermissionState.launchPermissionRequest()
@@ -79,7 +82,7 @@ class MainActivity : ComponentActivity() {
                                     .show()
                             }
                         }
-                        ContactList(contacts = contacts.value)
+                        ContactList(contacts = contacts.value ?: emptyList())
                     }
                 }
             }

@@ -21,5 +21,5 @@ interface ContactDao {
     fun getContactById(id: Long): ContactEntity
 
     @Update
-    fun update(contactEntity: ContactEntity)
+    suspend fun update(contactEntity: ContactEntity)
 }

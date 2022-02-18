@@ -1,11 +1,9 @@
 package com.android.yeophonebook.domain.repository
 
 import com.android.yeophonebook.data.dao.ContactDao
-import com.android.yeophonebook.data.db.ContactDataBase
 import com.android.yeophonebook.data.entity.ContactEntity
 import com.android.yeophonebook.domain.ContactMapper
 import com.android.yeophonebook.domain.model.ContactDomain
-import com.android.yeophonebook.ui.model.Contact
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -27,7 +25,7 @@ class ContactRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun update(contact: ContactEntity) {
+    private suspend fun update(contact: ContactEntity) {
         val contactInDb = get(contact.id)
         if(contact.equals(contactInDb).not()){
             contactDao.update(contact.apply { dateUpdated = System.currentTimeMillis() })

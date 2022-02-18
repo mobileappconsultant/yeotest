@@ -8,8 +8,7 @@ object Test {
     private const val mockkVersion = "1.12.0"
 
     private const val espressoCoreVersion = "3.4.0"
-    private const val turbineVersion = "0.7.0"
-
+    private const val robolectricVersion = "4.7.3"
 
 
     // AndroidX Test - Instrumented testing
@@ -22,5 +21,6 @@ object Test {
     const val mockk = "io.mockk:mockk:$mockkVersion"
     const val coroutineTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Kotlin.coroutinesVersion}"
-    const val turbine = "app.cash.turbine:turbine:$turbineVersion"
+    const val robolectric = "org.robolectric:robolectric:$robolectricVersion"
+    const val core = "androidx.test:core:1.4.0"
 }

@@ -8,5 +8,4 @@ interface ContactRepository {
     suspend fun insert(contacts: List<ContactDomain>)
     fun get() : Flow<List<ContactDomain>>
     fun get(id: Long): ContactEntity
-    suspend fun update(contact: ContactEntity)
 }

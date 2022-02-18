@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.ContactsContract
 import com.android.yeophonebook.ui.model.Contact
+import com.android.yeophonebook.utils.isValid
 import javax.inject.Inject
 import timber.log.Timber
 
@@ -44,7 +45,7 @@ class GetContactsFromDevice @Inject constructor() {
                     number = it.getString(numberIndex)
                     id = it.getLong(idIndex)
                     number = number.replace(" ", "")
-                    if (!mobileNoSet.contains(number)) {
+                    if (mobileNoSet.contains(number).not() && number.isValid() ) {
                         contactList.add(Contact(id, name, number))
                         mobileNoSet.add(number)
                         Timber.d("Contact: name = $name No = $number")

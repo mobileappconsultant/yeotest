@@ -10,6 +10,12 @@ plugins {
 android {
     compileSdk = 31
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
     defaultConfig {
         applicationId = "com.android.yeophonebook"
         minSdk = 24
@@ -68,8 +74,9 @@ dependencies {
 
 
     testImplementation(Test.coreTesting)
+    testImplementation(Test.core)
     testImplementation(Test.coroutineTest)
-    testImplementation(Test.turbine)
+    testImplementation(Test.robolectric)
     testImplementation(Test.mockk)
     testImplementation(Test.extJUnit)
     testImplementation(Test.espressoCore)
