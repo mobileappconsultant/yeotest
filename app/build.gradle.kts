@@ -37,6 +37,7 @@ android {
         }
         getByName("release") {
             isMinifyEnabled = false
+            buildConfigField("String", "encryptionKey", key)
         }
     }
     packagingOptions {
