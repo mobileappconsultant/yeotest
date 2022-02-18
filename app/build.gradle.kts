@@ -1,3 +1,7 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
+val key: String = gradleLocalProperties(rootDir).getProperty("encryptionKey")
+
 plugins {
     id(Plugins.androidApplication)
     kotlin(Plugins.android)
@@ -5,6 +9,8 @@ plugins {
     id(Plugins.parcelize)
     id(Plugins.hilt)
 }
+
+
 
 
 android {
@@ -26,6 +32,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "encryptionKey", key)
+        }
         getByName("release") {
             isMinifyEnabled = false
         }
@@ -94,5 +103,7 @@ dependencies {
     implementation(Room.runtime)
     implementation(Room.ktx)
     kapt(Room.compiler)
+    implementation(Room.sqliteCipher)
+
 
 }
