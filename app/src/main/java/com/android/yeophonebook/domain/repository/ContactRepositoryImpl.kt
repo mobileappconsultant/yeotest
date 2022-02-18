@@ -39,6 +39,6 @@ class ContactRepositoryImpl @Inject constructor(
             }
         }
 
-    override fun get(id: Long): ContactEntity =
+    override suspend fun get(id: Long): ContactEntity =
         contactDao.getContactById(id)
 }
