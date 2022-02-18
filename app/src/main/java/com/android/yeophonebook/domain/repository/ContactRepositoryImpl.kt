@@ -4,9 +4,9 @@ import com.android.yeophonebook.data.dao.ContactDao
 import com.android.yeophonebook.data.entity.ContactEntity
 import com.android.yeophonebook.domain.ContactMapper
 import com.android.yeophonebook.domain.model.ContactDomain
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 class ContactRepositoryImpl @Inject constructor(
     private val contactDao: ContactDao,
@@ -27,7 +27,7 @@ class ContactRepositoryImpl @Inject constructor(
 
     private suspend fun update(contact: ContactEntity) {
         val contactInDb = get(contact.id)
-        if(contact.equals(contactInDb).not()){
+        if (contact.equals(contactInDb).not()) {
             contactDao.update(contact.apply { dateUpdated = System.currentTimeMillis() })
         }
     }

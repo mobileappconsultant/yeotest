@@ -1,6 +1,5 @@
 object Test {
-    //Test
-
+    // Test
 
     // Dependencies for local unit tests
     private const val junitVersion = "4.13.2"
@@ -9,7 +8,6 @@ object Test {
 
     private const val espressoCoreVersion = "3.4.0"
     private const val robolectricVersion = "4.7.3"
-
 
     // AndroidX Test - Instrumented testing
     private const val archCoreTesting = "2.1.0"

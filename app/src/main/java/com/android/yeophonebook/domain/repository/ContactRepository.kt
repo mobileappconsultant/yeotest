@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ContactRepository {
     suspend fun insert(contacts: List<ContactDomain>)
-    fun get() : Flow<List<ContactDomain>>
+    fun get(): Flow<List<ContactDomain>>
     suspend fun get(id: Long): ContactEntity
 }

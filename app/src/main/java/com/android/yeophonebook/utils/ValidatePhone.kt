@@ -1,7 +1,6 @@
 package com.android.yeophonebook.utils
 
-
-fun String.isValid() : Boolean {
+fun String.isValid(): Boolean {
     val allowedChar = listOf(
         '-',
         '+',

@@ -19,18 +19,16 @@ import org.robolectric.RobolectricTestRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
-class ContactRepositoryImplTest{
+class ContactRepositoryImplTest {
 
     @get:Rule
     var instantTask = InstantTaskExecutorRule()
 
     private lateinit var db: ContactDatabase
 
-    private lateinit var sut : ContactRepository
-
+    private lateinit var sut: ContactRepository
 
     private val contactMapper: ContactMapper = ContactMapper()
-
 
     @Before
     fun setUp() {
@@ -44,7 +42,7 @@ class ContactRepositoryImplTest{
 
     @Test
     fun `given list of contacts, when insert contacts is called, then it should be inserted into the db`() = runTest {
-        val mockedContactDomain = List(5){
+        val mockedContactDomain = List(5) {
             ContactDomain(
                 id = it.toLong(),
                 name = "Test $it",

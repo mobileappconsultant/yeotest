@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 interface ContactDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addContactToDb(contactEntity: ContactEntity) : Long
+    suspend fun addContactToDb(contactEntity: ContactEntity): Long
 
     @Query("SELECT * FROM contacts")
     fun getAll(): Flow<List<ContactEntity>>

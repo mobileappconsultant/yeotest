@@ -12,5 +12,4 @@ object Compose {
     const val accompanistPermission = "com.google.accompanist:accompanist-permissions:$accompanistVersion"
     const val navigation = "androidx.navigation:navigation-compose:${Navigation.navVersion}"
     const val composeUiTest = "androidx.compose.ui:ui-test-junit4:$composeVersion"
-
 }

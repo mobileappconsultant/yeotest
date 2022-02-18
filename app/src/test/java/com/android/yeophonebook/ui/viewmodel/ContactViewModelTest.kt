@@ -19,7 +19,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class ContactViewModelTest {
 
@@ -33,9 +32,7 @@ class ContactViewModelTest {
     private val getContactsFromDevice = mockk<GetContactsFromDevice>()
     private val contactMapper = ContactMapper()
 
-
     private val mockedContext = mockk<Context>(relaxed = true)
-
 
     @Before
     fun setUp() {

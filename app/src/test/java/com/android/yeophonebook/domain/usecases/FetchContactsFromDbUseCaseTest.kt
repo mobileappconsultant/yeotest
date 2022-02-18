@@ -25,7 +25,7 @@ class FetchContactsFromDbUseCaseTest {
         FetchContactsFromDbUseCase(contactRepository)
 
     @Test
-    fun `given when fetchContactsFromDbUseCase is executed, verify that contactRepository get is called `() = testCoroutineRule.runTest{
+    fun `given when fetchContactsFromDbUseCase is executed, verify that contactRepository get is called `() = testCoroutineRule.runTest {
         sut.execute()
         verify {
             contactRepository.get()
