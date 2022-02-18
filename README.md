@@ -47,7 +47,7 @@ If we ever need to re-generate our baseline for detekt run:
 ## CI ⚙️
 
 There are currently the following workflows available:
-- [Android Pull Request & Master CI](.github/workflows/workflow.yaml) - Will run the `build`, `check` and `assembleDebug` tasks.
+- [Android Pull Request & Master CI](.github/workflows/workflow.yml) - Will run the `build`, `check` and `assembleDebug` tasks.
 
 ## How To Build
 Pull the code on this branch, import into Android Studio, from there you can run it like a standard
